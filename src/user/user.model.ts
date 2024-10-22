@@ -53,4 +53,17 @@ export class User extends Model<User> {
     allowNull: false,
   })
   children: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,  // Это поле может быть пустым
+  })
+  city: string;
+
+  // Добавляем поле для поликлиники
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,  // Это поле может быть пустым
+  })
+  clinic: string;
 }

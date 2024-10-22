@@ -8,4 +8,6 @@ export declare class User extends Model<User> {
     phoneNumber: string;
     password: string;
     children: number;
+    city: string;
+    clinic: string;
 }

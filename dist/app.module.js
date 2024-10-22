@@ -43,7 +43,7 @@ exports.AppModule = AppModule = __decorate([
                 port: Number(process.env.DB_PORT) || 5432,
                 username: process.env.DB_USER || "postgres",
                 password: process.env.DB_PASSWORD || "root",
-                database: process.env.DB_NAME || "Damm",
+                database: process.env.DB_NAME || "damm",
                 models: [user_model_1.User, child_model_1.Child, passed_test_model_1.PassedTest, note_model_1.Note, feedback_model_1.Feedback, test_model_1.Test, daily_report_model_1.DailyReport],
                 autoLoadModels: true,
                 synchronize: true,

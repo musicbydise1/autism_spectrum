@@ -3,7 +3,8 @@ import {
   IsEmail,
   IsNotEmpty,
   IsOptional,
-  IsEnum,
+  IsNumber,
+  Min,
 } from "class-validator";
 
 export class CreateCustomerDto {
@@ -11,13 +12,13 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   readonly firstName: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
   readonly lastName: string;
 
   @IsString()
   @IsNotEmpty()
-  readonly Patronymic: string;
+  readonly patronymic: string;
 
   @IsString()
   @IsNotEmpty()
@@ -27,11 +28,22 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   readonly password: string;
 
-  @IsString()
+  @IsEmail()
   @IsNotEmpty()
   readonly email: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsNumber()
+  @IsOptional()
+  @Min(0)
   readonly children: number = 0;
+
+  // Добавляем поле для города
+  @IsString()
+  @IsOptional()
+  readonly city?: string;
+
+  // Добавляем поле для поликлиники
+  @IsString()
+  @IsOptional()
+  readonly clinic?: string;
 }
