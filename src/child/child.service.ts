@@ -7,10 +7,13 @@ import { CreateChildDto } from "./Dto/create.child.dto";
 export class ChildService {
   constructor(@InjectModel(Child) private readonly childModel: typeof Child) {}
 
+  // Метод для создания ребенка
   async createChild(dto: CreateChildDto) {
     return this.childModel.create(dto);
   }
-  async getByParent(id) {
-    return this.childModel.findOne({ where: { parentId: id } });
+
+  // Метод для получения всех детей по ID родителя
+  async getByParent(parentId: number) {
+    return this.childModel.findAll({ where: { parentId } });  // Возвращаем всех детей
   }
 }

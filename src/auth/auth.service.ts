@@ -11,18 +11,25 @@ import { CreateCustomerDto } from "src/user/Dto/create.customer.dto";
 import { LoginCustomerDto } from "src/user/Dto/login.customer.dto";
 import { User } from "src/user/user.model";
 import { UserService } from "src/user/user.service";
+import { ChildService } from 'src/child/child.service';  // Подключаем ChildService
+
 @Injectable()
 export class AuthService {
   constructor(
       private customerService: UserService,
+      private childService: ChildService,  // Добавляем сервис для работы с детьми
       private jwtService: JwtService
   ) {}
 
   async login(customerDto: LoginCustomerDto) {
     const customer = await this.validateCustomer(customerDto);
-    const tkn = await this.generateToken(customer);  // Добавляем await
+    const tkn = await this.generateToken(customer);
+
+    // Получаем информацию о ребенке по ID родителя
+    const children = await this.childService.getByParent(customer.user_id) || [];
+
     log(tkn);
-    return [tkn, customer];
+    return { token: tkn, user: customer, children };  // Возвращаем данные о токене, пользователе и детях
   }
 
   async registration(customerDto: CreateCustomerDto) {
@@ -42,16 +49,20 @@ export class AuthService {
       ...customerDto,
       password: hash,
     });
-    const tkn = await this.generateToken(customer);  // Добавляем await
+    const tkn = await this.generateToken(customer);
+
+    // Получаем информацию о ребенке после регистрации
+    const children = await this.childService.getByParent(customer.user_id) || [];
+
     log(tkn);
-    return [tkn, customer];
+    return { token: tkn, user: customer, children };  // Возвращаем токен, пользователя и детей
   }
 
   private async generateToken(user: User) {
     const payload = { email: user.email, id: user.user_id };
 
     return {
-      token: this.jwtService.sign(payload),  // Подписываем токен
+      token: this.jwtService.sign(payload),
     };
   }
 

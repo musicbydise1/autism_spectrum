@@ -8,5 +8,6 @@ import { Child } from "./child.model";
   controllers: [ChildController],
   providers: [ChildService],
   imports: [SequelizeModule.forFeature([Child])],
+  exports: [ChildService],  // Экспортируем ChildService
 })
 export class ChildModule {}
