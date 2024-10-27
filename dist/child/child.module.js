@@ -20,6 +20,7 @@ exports.ChildModule = ChildModule = __decorate([
         controllers: [child_controller_1.ChildController],
         providers: [child_service_1.ChildService],
         imports: [sequelize_1.SequelizeModule.forFeature([child_model_1.Child])],
+        exports: [child_service_1.ChildService],
     })
 ], ChildModule);
 //# sourceMappingURL=child.module.js.map

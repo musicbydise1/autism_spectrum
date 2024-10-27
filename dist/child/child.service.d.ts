@@ -4,5 +4,5 @@ export declare class ChildService {
     private readonly childModel;
     constructor(childModel: typeof Child);
     createChild(dto: CreateChildDto): Promise<Child>;
-    getByParent(id: any): Promise<Child>;
+    getByParent(parentId: number): Promise<Child[]>;
 }

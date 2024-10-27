@@ -36,13 +36,13 @@ export class Child extends Model<Child> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   lastName: string;
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   Patronymic: string;
 

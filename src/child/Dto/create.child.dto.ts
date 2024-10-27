@@ -17,11 +17,11 @@ export class CreateChildDto {
   readonly firstName: string;
 
   @IsEmail()
-  @IsNotEmpty()
+  @IsOptional()
   readonly lastName: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   readonly Patronymic: string;
 
   @IsString()

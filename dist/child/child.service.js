@@ -23,8 +23,8 @@ let ChildService = class ChildService {
     async createChild(dto) {
         return this.childModel.create(dto);
     }
-    async getByParent(id) {
-        return this.childModel.findOne({ where: { parentId: id } });
+    async getByParent(parentId) {
+        return this.childModel.findAll({ where: { parentId } });
     }
 };
 exports.ChildService = ChildService;
