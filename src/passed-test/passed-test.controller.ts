@@ -15,4 +15,8 @@ export class PassedTestController {
   async getPassedTestsByParent(@Query("parentId") parentId: number) {
     return this.testService.getPassedTestsByParent(parentId);
   }
+  @Get("/all")
+  async getAllPassedTests() {
+    return this.testService.getAllPassedTests();
+  }
 }

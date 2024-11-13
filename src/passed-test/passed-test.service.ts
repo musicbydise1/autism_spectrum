@@ -19,4 +19,8 @@ export class PassedTestService {
       include: [{ all: true }],
     });
   }
+
+  async getAllPassedTests(): Promise<PassedTest[]> {
+    return this.testModel.findAll();
+  }
 }
