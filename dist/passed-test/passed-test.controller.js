@@ -26,6 +26,9 @@ let PassedTestController = class PassedTestController {
     async getPassedTestsByParent(parentId) {
         return this.testService.getPassedTestsByParent(parentId);
     }
+    async getAllPassedTests() {
+        return this.testService.getAllPassedTests();
+    }
 };
 exports.PassedTestController = PassedTestController;
 __decorate([
@@ -42,6 +45,12 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], PassedTestController.prototype, "getPassedTestsByParent", null);
+__decorate([
+    (0, common_1.Get)("/all"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], PassedTestController.prototype, "getAllPassedTests", null);
 exports.PassedTestController = PassedTestController = __decorate([
     (0, common_1.Controller)("passed-test"),
     __metadata("design:paramtypes", [passed_test_service_1.PassedTestService])

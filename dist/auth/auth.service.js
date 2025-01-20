@@ -15,16 +15,19 @@ const jwt_1 = require("@nestjs/jwt");
 const bcrypt = require("bcrypt");
 const console_1 = require("console");
 const user_service_1 = require("../user/user.service");
+const child_service_1 = require("../child/child.service");
 let AuthService = class AuthService {
-    constructor(customerService, jwtService) {
+    constructor(customerService, childService, jwtService) {
         this.customerService = customerService;
+        this.childService = childService;
         this.jwtService = jwtService;
     }
     async login(customerDto) {
         const customer = await this.validateCustomer(customerDto);
         const tkn = await this.generateToken(customer);
+        const children = await this.childService.getByParent(customer.user_id) || [];
         (0, console_1.log)(tkn);
-        return [tkn, customer];
+        return { token: tkn, user: customer, children };
     }
     async registration(customerDto) {
         const candidate = await this.customerService.findOneByEmail(customerDto.email);
@@ -37,8 +40,9 @@ let AuthService = class AuthService {
             password: hash,
         });
         const tkn = await this.generateToken(customer);
+        const children = await this.childService.getByParent(customer.user_id) || [];
         (0, console_1.log)(tkn);
-        return [tkn, customer];
+        return { token: tkn, user: customer, children };
     }
     async generateToken(user) {
         const payload = { email: user.email, id: user.user_id };
@@ -59,6 +63,7 @@ exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [user_service_1.UserService,
+        child_service_1.ChildService,
         jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

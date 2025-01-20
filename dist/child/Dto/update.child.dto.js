@@ -9,39 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateChildDto = void 0;
+exports.UpdateChildDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateChildDto {
+class UpdateChildDto {
 }
-exports.CreateChildDto = CreateChildDto;
+exports.UpdateChildDto = UpdateChildDto;
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], CreateChildDto.prototype, "parentId", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateChildDto.prototype, "firstName", void 0);
-__decorate([
-    (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], CreateChildDto.prototype, "lastName", void 0);
+    __metadata("design:type", Number)
+], UpdateChildDto.prototype, "parentId", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], CreateChildDto.prototype, "Patronymic", void 0);
+], UpdateChildDto.prototype, "firstName", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UpdateChildDto.prototype, "lastName", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UpdateChildDto.prototype, "patronymic", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Number)
-], CreateChildDto.prototype, "age", void 0);
+], UpdateChildDto.prototype, "age", void 0);
 __decorate([
     (0, class_validator_1.IsBoolean)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Boolean)
-], CreateChildDto.prototype, "diagnosed", void 0);
-//# sourceMappingURL=create.child.dto.js.map
+], UpdateChildDto.prototype, "diagnosed", void 0);
+//# sourceMappingURL=update.child.dto.js.map

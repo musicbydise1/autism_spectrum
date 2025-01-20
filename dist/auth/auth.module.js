@@ -12,6 +12,7 @@ const auth_controller_1 = require("./auth.controller");
 const auth_service_1 = require("./auth.service");
 const jwt_1 = require("@nestjs/jwt");
 const user_module_1 = require("../user/user.module");
+const child_module_1 = require("../child/child.module");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -21,6 +22,7 @@ exports.AuthModule = AuthModule = __decorate([
         providers: [auth_service_1.AuthService],
         imports: [
             user_module_1.UserModule,
+            child_module_1.ChildModule,
             jwt_1.JwtModule.register({
                 secret: process.env.PRIVATE_KEY || "secret",
                 signOptions: {

@@ -27,7 +27,23 @@ let TestService = class TestService {
         return this.testModel.findAll();
     }
     async findOne(testId) {
-        return this.testModel.findOne({ where: { testId } });
+        const options = { where: { testId } };
+        return this.testModel.findOne(options);
+    }
+    async updateTest(id, testName) {
+        const test = await this.findOne(id);
+        if (!test) {
+            throw new Error('Test not found');
+        }
+        test.testName = testName;
+        await test.save();
+    }
+    async deleteTest(id) {
+        const test = await this.findOne(id);
+        if (!test) {
+            throw new Error('Test not found');
+        }
+        await test.destroy();
     }
 };
 exports.TestService = TestService;

@@ -26,6 +26,28 @@ let ChildService = class ChildService {
     async getByParent(parentId) {
         return this.childModel.findAll({ where: { parentId } });
     }
+    async getAllChildren() {
+        return this.childModel.findAll();
+    }
+    async findOneById(id) {
+        const options = { where: { id } };
+        return this.childModel.findOne(options);
+    }
+    async updateChild(id, updateChildDto) {
+        const child = await this.findOneById(id);
+        if (!child) {
+            throw new Error('Child not found');
+        }
+        await child.update(updateChildDto);
+        return child.reload();
+    }
+    async deleteChild(id) {
+        const child = await this.findOneById(id);
+        if (!child) {
+            throw new Error('Child not found');
+        }
+        await child.destroy();
+    }
 };
 exports.ChildService = ChildService;
 exports.ChildService = ChildService = __decorate([

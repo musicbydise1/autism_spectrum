@@ -10,6 +10,11 @@ async function bootstrap() {
     const PORT = process.env.PORT || 5000;
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.use((0, helmet_1.default)());
+    app.enableCors({
+        origin: true,
+        methods: 'GET,POST,PUT,DELETE',
+        allowedHeaders: 'Content-Type, Authorization',
+    });
     await app.listen(3000, () => {
         (0, console_1.log)("Service started on port " + PORT);
     });

@@ -5,4 +5,6 @@ export declare class TestController {
     create(testName: string): Promise<import("./test.model").Test>;
     findAll(): Promise<import("./test.model").Test[]>;
     findOne(id: number): Promise<import("./test.model").Test>;
+    update(id: number, testName: string): Promise<void>;
+    remove(id: number): Promise<void>;
 }

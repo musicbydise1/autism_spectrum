@@ -30,6 +30,9 @@ let PassedTestService = class PassedTestService {
             include: [{ all: true }],
         });
     }
+    async getAllPassedTests() {
+        return this.testModel.findAll();
+    }
 };
 exports.PassedTestService = PassedTestService;
 exports.PassedTestService = PassedTestService = __decorate([

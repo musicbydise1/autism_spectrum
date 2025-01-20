@@ -13,7 +13,7 @@ async function bootstrap() {
 
   // Настройка CORS
   app.enableCors({
-    origin: ['http://localhost:8080', 'https://adminspectrum.kz'], // Разрешенные источники
+    origin: true, // Разрешенные источники
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type, Authorization',
   });

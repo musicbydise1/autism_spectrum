@@ -28,6 +28,12 @@ let TestController = class TestController {
     findOne(id) {
         return this.testService.findOne(id);
     }
+    update(id, testName) {
+        return this.testService.updateTest(id, testName);
+    }
+    remove(id) {
+        return this.testService.deleteTest(id);
+    }
 };
 exports.TestController = TestController;
 __decorate([
@@ -50,6 +56,21 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], TestController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Put)("admin/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __param(1, (0, common_1.Body)("testName")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, String]),
+    __metadata("design:returntype", void 0)
+], TestController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)("admin/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], TestController.prototype, "remove", null);
 exports.TestController = TestController = __decorate([
     (0, common_1.Controller)("test"),
     __metadata("design:paramtypes", [test_service_1.TestService])

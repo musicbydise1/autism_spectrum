@@ -6,4 +6,7 @@ export declare class UserService {
     findOneByEmail(email: string): Promise<User>;
     findOneById(id: number): Promise<User>;
     createUser(createCustomerDto: CreateCustomerDto): Promise<User>;
+    findAll(): Promise<User[]>;
+    updateUser(id: number, updateCustomerDto: Partial<CreateCustomerDto>): Promise<User>;
+    deleteUser(id: number): Promise<void>;
 }

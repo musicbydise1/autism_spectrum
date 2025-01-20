@@ -5,4 +5,5 @@ export declare class PassedTestController {
     constructor(testService: PassedTestService);
     endTest(passedTest: PassTestDto): Promise<import("./passed-test.model").PassedTest>;
     getPassedTestsByParent(parentId: number): Promise<import("./passed-test.model").PassedTest[]>;
+    getAllPassedTests(): Promise<import("./passed-test.model").PassedTest[]>;
 }

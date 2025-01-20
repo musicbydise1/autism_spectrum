@@ -5,4 +5,5 @@ export declare class PassedTestService {
     constructor(testModel: typeof PassedTest);
     submitTest(passedTest: PassTestDto): Promise<PassedTest>;
     getPassedTestsByParent(parentId: number): Promise<PassedTest[]>;
+    getAllPassedTests(): Promise<PassedTest[]>;
 }

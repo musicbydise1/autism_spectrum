@@ -21,13 +21,30 @@ let UserService = class UserService {
         this.userModel = userModel;
     }
     async findOneByEmail(email) {
-        return this.userModel.findOne({ where: { email } });
+        const options = { where: { email } };
+        return this.userModel.findOne(options);
     }
     async findOneById(id) {
-        return this.userModel.findOne({ where: { user_id: id } });
+        const options = { where: { user_id: id } };
+        return this.userModel.findOne(options);
     }
     async createUser(createCustomerDto) {
         return this.userModel.create(createCustomerDto);
+    }
+    async findAll() {
+        return this.userModel.findAll();
+    }
+    async updateUser(id, updateCustomerDto) {
+        const user = await this.findOneById(id);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        await user.update(updateCustomerDto);
+        return user.reload();
+    }
+    async deleteUser(id) {
+        const user = await this.findOneById(id);
+        await user.destroy();
     }
 };
 exports.UserService = UserService;
